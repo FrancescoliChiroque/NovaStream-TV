@@ -1,0 +1,17 @@
+{
+  "id": "com.novastream.tv",
+  "version": "1.0.0",
+  "vendor": "NovaStream",
+  "type": "web",
+  "main": "index.html",
+  "title": "NovaStream TV",
+  "icon": "assets/icons/icon80.png",
+  "largeIcon": "assets/icons/icon130.png",
+  "appDescription": "Reproductor IPTV para Smart TV",
+  "resolution": "1920x1080",
+  "bgColor": "#070b14",
+  "iconColor": "#4f7cff",
+  "disableBackHistoryAPI": true,
+  "handlesRelaunch": true,
+  "requiredMemory": 64
+}

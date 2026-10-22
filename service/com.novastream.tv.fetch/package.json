@@ -1,0 +1,11 @@
+{
+  "name": "com.novastream.tv.fetch",
+  "version": "1.0.0",
+  "description": "Proxy de descarga para NovaStream TV (evita el bloqueo CORS de las apps empaquetadas)",
+  "main": "fetch_service.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "Apache-2.0"
+}

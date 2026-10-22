@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tv generator-info-name="NovaStream demo">
+  <channel id="demo-bipbop">
+    <display-name>BipBop (Apple)</display-name>
+    <icon src=""/>
+  </channel>
+  <channel id="demo-bipbop-old">
+    <display-name>BipBop (CloudFront)</display-name>
+  </channel>
+  <channel id="demo-mux">
+    <display-name>Mux Test</display-name>
+  </channel>
+  <channel id="demo-mux-2">
+    <display-name>Mux Test 2</display-name>
+  </channel>
+  <channel id="demo-groupe">
+    <display-name>Canal de prueba internacional</display-name>
+  </channel>
+  <programme start="20200101000000 +0000" stop="20350101000000 +0000" channel="demo-bipbop">
+    <title lang="es">Canal de demostracion (siempre en emision)</title>
+    <desc lang="es">Emision de prueba para comprobar la guia, el reproductor y la navegacion con el mando.</desc>
+  </programme>
+  <programme start="20200101000000 +0000" stop="20350101000000 +0000" channel="demo-mux">
+    <title lang="es">Mux Test (siempre en emision)</title>
+    <desc lang="es">Emision de prueba para comprobar el reproductor HLS.</desc>
+  </programme>
+</tv>

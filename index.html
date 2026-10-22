@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="dark">
+<title>NovaStream TV</title>
+<link rel="stylesheet" href="styles/main.css">
+</head>
+<body class="ns-body is-booting">
+  <div id="ns-boot" class="ns-boot" role="status" aria-live="polite">
+    <div class="ns-boot__logo" aria-hidden="true">
+      <span class="ns-boot__mark">N</span>
+    </div>
+    <p class="ns-boot__text">NovaStream TV</p>
+    <p id="ns-boot-error" class="ns-boot__error" hidden></p>
+  </div>
+
+  <div id="ns-app" class="ns-app" hidden></div>
+
+  <script>
+  (function () {
+    // En un IPK la app se sirve desde file:// y Chromium bloquea los
+    // ES Modules por CORS, por eso el paquete usa el bundle clasico
+    // (app.bundle.js). En desarrollo (http://) si se usan los modulos.
+    var dev = location.protocol === 'http:' || location.protocol === 'https:';
+
+    function boot() {
+      var s = document.createElement('script');
+      if (dev) {
+        s.type = 'module';
+        s.src = 'src/main.js';
+      } else {
+        s.src = 'app.bundle.js';
+      }
+      s.onerror = function () {
+        var box = document.getElementById('ns-boot-error');
+        box.hidden = false;
+        box.textContent = 'No se pudo cargar el nucleo de la aplicacion (app.bundle.js).';
+        document.body.classList.remove('is-booting');
+      };
+      document.head.appendChild(s);
+    }
+
+    // webOSTV.js es la libreria heredada: sobrescribe window.webOS con una
+    // implementacion que depende de PalmServiceBridge. En webOS 22+ y en
+    // webOS Hub (televisores HYLED, Hisense...) el propio sistema ya expone
+    // el objeto global 'webOS', asi que la libreria solo se carga si el SO no
+    // lo provides.
+    if (window.webOS && window.webOS.service) {
+      boot();
+    } else {
+      var vendor = document.createElement('script');
+      vendor.src = 'vendor/webOSTVjs-1.2.13/webOSTV.js';
+      vendor.onload = boot;
+      vendor.onerror = boot;
+      document.head.appendChild(vendor);
+    }
+  })();
+  </script>
+</body>
+</html>

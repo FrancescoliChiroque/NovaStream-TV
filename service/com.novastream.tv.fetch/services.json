@@ -1,0 +1,10 @@
+{
+  "id": "com.novastream.tv.fetch",
+  "description": "Servicio auxiliar de NovaStream TV para descargar listas M3U, guias XMLTV y respuestas de la API Xtream Codes.",
+  "services": [
+    {
+      "name": "com.novastream.tv.fetch",
+      "description": "Descarga HTTP controlada para la app NovaStream TV."
+    }
+  ]
+}
