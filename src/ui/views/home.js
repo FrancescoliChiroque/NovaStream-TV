@@ -109,15 +109,21 @@ export function createDemoView(ctx) {
 
   function show() {
     clear(body);
-    body.appendChild(el('p', { class: 'note', text: 'Flujos publicos de prueba (Mux y Apple). Sirven para comprobar la reproduccion, no son canales de television.' }));
-    body.appendChild(createRow('Canales de prueba', DEMO_CHANNELS, {
+    // Secciones de demostracion: mas canales, peliculas y series para probar
+    // la app sin configurar una fuente.
+    body.appendChild(createRow('Canales de demostracion', DEMO_CHANNELS, {
       onSelect: function (item) { ctx.play(item); }
     }));
-    body.appendChild(createRow('Peliculas de prueba', DEMO_MOVIES, {
+    body.appendChild(createRow('Peliculas de demostracion', DEMO_MOVIES, {
       onSelect: function (item) { ctx.play(item); }
     }));
-    body.appendChild(createRow('Series de prueba', DEMO_SERIES, {
+    body.appendChild(createRow('Series de demostracion', DEMO_SERIES, {
       onSelect: function (item) {
+        var episodes = DEMO_EPISODES.filter(function (ep) { return ep.seriesId === item.id; });
+        if (episodes.length) {
+          ctx.play(episodes[0]);
+          return;
+        }
         ctx.play(DEMO_EPISODES[0]);
       }
     }));
